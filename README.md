@@ -164,6 +164,25 @@ The backend starts on `http://localhost:8000`. The frontend will detect it and i
 
 ---
 
+## 🌐 GitHub Pages Deployment
+
+The application is configured for automated deployment via GitHub Actions:
+
+- **Live URL**: `https://muntahamohammad055-byte.github.io/PhishGuard/`
+- **Base Path**: `/PhishGuard/` (configured in `frontend/vite.config.ts`)
+- **Workflow File**: `.github/workflows/deploy.yml`
+
+### One-Time Setup in GitHub
+1. In your GitHub repository, navigate to **Settings** > **Pages**.
+2. Under **Build and deployment** > **Source**, select **GitHub Actions**.
+3. Push changes to the `main` branch to trigger automated build and deployment!
+
+### Backend Architecture in Deployment
+- **Client-Side Autonomy**: The frontend features a complete, standalone heuristic engine written in TypeScript (`urlAnalyzer.ts`, `emailAnalyzer.ts`, `urlComparator.ts`). It **does not require a running backend** to detect phishing URLs, analyze emails, run awareness quizzes, or track telemetry on GitHub Pages.
+- **Optional Cloud Backend**: If you also wish to deploy the Python backend, you can host `backend/` on [Render](https://render.com), [Railway](https://railway.app), or [Fly.io](https://fly.io), and configure the environment variable `VITE_API_BASE_URL` with your public backend URL. If omitted, PhishGuard automatically and gracefully operates with its built-in browser engine.
+
+---
+
 ## 🔒 Security & Privacy Notice
 - **Educational & Defensive Tool**: PhishGuard AI is intended for defensive security awareness and education. While its heuristic scoring evaluates dozens of known phishing techniques, zero heuristic risk does not guarantee complete absence of malicious code.
 - **No Remote Transmission**: Entered text and URLs are never dispatched to external AI platforms or commercial cloud loggers. All data remains local to your device and local backend.
